@@ -6,6 +6,7 @@ target 'VacationPlanner' do
   use_frameworks!
 
   # Pods for VacationPlanner
+  pod 'Alamofire', '~> 4.7'
 
   target 'VacationPlannerTests' do
     inherit! :search_paths

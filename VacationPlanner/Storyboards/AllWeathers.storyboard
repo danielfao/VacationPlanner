@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wn7-Ov-ROK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="DNt-Cn-LeQ">
+            <objects>
+                <navigationController id="Wn7-Ov-ROK" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WNV-g3-WSi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lg8-rx-57i" kind="relationship" relationship="rootViewController" id="lGu-Xo-Sex"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ghg-i3-N0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-372" y="101"/>
+        </scene>
+        <!--All Weathers View Controller-->
+        <scene sceneID="2GF-n6-Fkm">
+            <objects>
+                <viewController storyboardIdentifier="AllWeathersViewController" id="Lg8-rx-57i" customClass="AllWeathersViewController" customModule="VacationPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W25-KQ-gho">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d7T-UK-Lxc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d7T-UK-Lxc" firstAttribute="top" secondItem="E1w-jy-qaK" secondAttribute="top" id="3Q3-YW-mL6"/>
+                            <constraint firstItem="d7T-UK-Lxc" firstAttribute="leading" secondItem="E1w-jy-qaK" secondAttribute="leading" id="ZpL-c2-tNV"/>
+                            <constraint firstItem="E1w-jy-qaK" firstAttribute="trailing" secondItem="d7T-UK-Lxc" secondAttribute="trailing" id="kKW-Fo-Kq4"/>
+                            <constraint firstItem="E1w-jy-qaK" firstAttribute="bottom" secondItem="d7T-UK-Lxc" secondAttribute="bottom" id="rQh-4d-Qcu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="E1w-jy-qaK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eM5-78-fki"/>
+                    <connections>
+                        <outlet property="tableView" destination="d7T-UK-Lxc" id="fBz-is-0Uq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6TG-oS-pg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="615" y="100"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  VacationPlanner
+
+  Created by Daniel Oliveira on 27/12/18.
+  Copyright © 2018 Daniel Oliveira. All rights reserved.
+*/
+
+// Navigation Title
+"weathers_title" = "Climas";
+"home_title" = "Planejador de Férias";

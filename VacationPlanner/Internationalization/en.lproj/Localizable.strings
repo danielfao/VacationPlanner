@@ -8,4 +8,7 @@
 
 // MARK: - Navigation Title
 "weathers_title" = "Weathers";
-"home_title" = "Vacation Planner";
+"vacation_planner_title" = "Vacation Planner";
+
+// MARK: - Weather text
+"weathers_select_your_text" = "Select your preferred weather";

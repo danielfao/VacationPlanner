@@ -19,7 +19,6 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedImageView: UIImageView! {
         didSet {
             self.selectedImageView.contentMode = .scaleAspectFit
-            self.selectedImageView.tintColor = UIColor.cyan
         }
     }
     
@@ -36,8 +35,8 @@ class WeatherTableViewCell: UITableViewCell {
     }
 
     // MARK: - Setup
-    func setupCell(weather: String, isSelected: Bool) {
-        self.weatherLabel.text = weather
+    func setupCell(weather: Weather) {
+        self.weatherLabel.text = weather.name
     }
     
     // MARK: - Functions

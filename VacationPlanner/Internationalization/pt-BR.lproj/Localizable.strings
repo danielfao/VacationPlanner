@@ -6,11 +6,18 @@
   Copyright © 2018 Daniel Oliveira. All rights reserved.
 */
 
-// Navigation Title
+// MARK: - Titles
 "weathers_title" = "Climas";
 "cities_title" = "Cidades";
 "vacation_planner_title" = "Planejador de Férias";
+"vacation_date_title" = "Data das Férias";
+"search_button_title" = "Procurar";
+"results_title" = "Resultados";
+"sorry_title" = "Desculpe";
 
-// MARK: - Weather text
+// MARK: - Texts
 "weathers_select_text" = "Selecione o seu clima preferido";
 "cities_select_text" = "Selecione a sua cidade preferida";
+"vacation_days_text" = "Insira quantos de dias de férias deseja (de 5 a 30 dias) para o período de um ano";
+"number_of_days_placeholder_text" = "Número de dias";
+"no_result_found_text" = "Nenhum resultado encontrado";

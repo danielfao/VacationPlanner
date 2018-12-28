@@ -29,7 +29,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ7-7t-yXu">
-                    <rect key="frame" x="16" y="44.5" width="343" height="55.5"/>
+                    <rect key="frame" x="16" y="44.5" width="327" height="55.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                 <constraint firstItem="9qA-KT-kg5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="D3M-V2-1FH"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kQ7-7t-yXu" secondAttribute="bottom" constant="16" id="EOc-mb-mW7"/>
                 <constraint firstItem="UlD-9j-BSo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="Giu-Pg-bza"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="kQ7-7t-yXu" secondAttribute="trailing" constant="16" id="UzV-7a-mnm"/>
+                <constraint firstItem="UlD-9j-BSo" firstAttribute="leading" secondItem="kQ7-7t-yXu" secondAttribute="trailing" id="UzV-7a-mnm"/>
                 <constraint firstItem="kQ7-7t-yXu" firstAttribute="top" secondItem="9qA-KT-kg5" secondAttribute="bottom" constant="8" id="m33-wE-nOL"/>
                 <constraint firstItem="kQ7-7t-yXu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mZW-8e-pu0"/>
                 <constraint firstItem="UlD-9j-BSo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9qA-KT-kg5" secondAttribute="trailing" constant="16" id="nBo-g0-ii8"/>

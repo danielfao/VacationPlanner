@@ -20,10 +20,27 @@ class HomeViewController: UIViewController {
             self.citiesView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapAllCities)))
         }
     }
+    @IBOutlet weak var VacationDateView: VacationDateView!
+    @IBOutlet weak var searchButton: UIButton! {
+        didSet {
+            self.searchButton.setTitle(NSLocalizedString("search_button_title", comment: "").uppercased(), for: .normal)
+            self.searchButton.setTitleColor(UIColor.white, for: .normal)
+            self.searchButton.backgroundColor = UIColor.darkGray
+        }
+    }
     
     // MARK: - Variables
-    private var selectedWeathers: [Weather] = []
-    private var selectedCity: City?
+    private var selectedWeathers: [Weather] = [] {
+        didSet {
+            self.verifyFields()
+        }
+    }
+    private var selectedCity: City? {
+        didSet {
+            self.verifyFields()
+        }
+    }
+    var results: [Results] = []
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,6 +48,13 @@ class HomeViewController: UIViewController {
         
         //Navigation Bar
         self.navigationItem.title = NSLocalizedString("vacation_planner_title", comment: "")
+        self.verifyFields()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        self.view.endEditing(true)
     }
 
     // MARK: - Functions
@@ -49,6 +73,35 @@ class HomeViewController: UIViewController {
             vc.delegate = self
             vc.previouslySelectedCity = self.selectedCity
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    // MARK: - IBActions
+    @IBAction func didTapSearchButton(_ sender: Any) {
+        guard let selectedCity = self.selectedCity else {
+            return
+        }
+        ResultsService.getResults(cityId: selectedCity.id, numberOfDays: Int(self.VacationDateView.numberOfDaysStepper.value), weather: self.selectedWeathers) { (results) in
+            if !results.isEmpty {
+                let sb = UIStoryboard(name: StoryboardName.Results)
+                if let vc = sb.instantiateViewController(withIdentifier: ViewControllerName.Results) as? ResultsViewController {
+                    vc.filteredResults = results
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            } else {
+                let alertController = UIAlertController(title: NSLocalizedString("sorry_title", comment: ""), message: NSLocalizedString("no_result_found_text", comment: ""), preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // MARK: - Methods
+    private func verifyFields() {
+        if !self.selectedWeathers.isEmpty && self.selectedCity != nil {
+            self.searchButton.isEnabled = true
+        } else {
+            self.searchButton.isEnabled = false
         }
     }
 }

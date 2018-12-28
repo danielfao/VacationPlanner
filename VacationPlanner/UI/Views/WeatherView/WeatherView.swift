@@ -22,7 +22,7 @@ class WeatherView: BaseView {
             self.selectedWeatherLabel.text = NSLocalizedString("weathers_select_text", comment: "")
             self.selectedWeatherLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
             self.selectedWeatherLabel.textColor = UIColor.lightGray3
-            self.selectedWeatherLabel.contentMode = .center
+            self.selectedWeatherLabel.textAlignment = .justified
         }
     }
     @IBOutlet weak var chevronImage: UIImageView! {

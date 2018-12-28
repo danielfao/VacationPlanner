@@ -6,11 +6,18 @@
   Copyright © 2018 Daniel Oliveira. All rights reserved.
 */
 
-// MARK: - Navigation Title
+// MARK: - Titles
 "weathers_title" = "Weathers";
 "cities_title" = "Cities";
 "vacation_planner_title" = "Vacation Planner";
+"vacation_date_title" = "Vacation Date";
+"search_button_title" = "Search";
+"results_title" = "Results";
+"sorry_title" = "Sorry";
 
-// MARK: - Select text
+// MARK: - Texts
 "weathers_select_text" = "Select your preferred weather";
 "cities_select_text" = "Select your preferred city";
+"vacation_days_text" = "Insert how many vacation days you want (from 5 to 30 days) in a period of one year";
+"number_of_days_placeholder_text" = "Number of days";
+"no_result_found_text" = "No result was found";

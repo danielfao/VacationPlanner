@@ -12,10 +12,12 @@ enum StoryboardName : String {
     case Home = "Home"
     case AllWeathers = "AllWeathers"
     case AllCities = "AllCities"
+    case Results = "Results"
 }
 
 struct ViewControllerName {
     static let Home = "HomeViewController"
     static let AllWeathers = "AllWeathersViewController"
     static let AllCities = "AllCitiesViewController"
+    static let Results = "ResultsViewController"
 }

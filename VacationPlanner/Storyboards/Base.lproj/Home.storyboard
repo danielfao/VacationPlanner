@@ -33,24 +33,58 @@
                                 <rect key="frame" x="0.0" y="238" width="375" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q09-w6-fNT" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="374" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="epN-Ff-WKb"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="H7G-B5-WDM"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7i-9N-qxS" customClass="VacationDateView" customModule="VacationPlanner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="383" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WL0-Hx-mtp">
+                                <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="U4b-oH-wIe"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTapSearchButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7iW-1n-O0h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nFE-9W-4Wf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7zx-5F-eKS"/>
+                            <constraint firstItem="WL0-Hx-mtp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c7i-9N-qxS" secondAttribute="bottom" constant="16" id="AZB-tD-MUr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WL0-Hx-mtp" secondAttribute="bottom" id="D7H-z4-NwS"/>
+                            <constraint firstItem="WL0-Hx-mtp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Eyr-Pj-68M"/>
                             <constraint firstAttribute="trailing" secondItem="6uQ-YC-XaV" secondAttribute="trailing" id="JBf-aB-AAg"/>
                             <constraint firstItem="6uQ-YC-XaV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OUf-uN-Ruc"/>
+                            <constraint firstAttribute="trailing" secondItem="Q09-w6-fNT" secondAttribute="trailing" id="Q60-EX-EeJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c7i-9N-qxS" secondAttribute="trailing" id="T37-C8-Ctb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OrK-md-J3d" secondAttribute="trailing" id="TCi-7f-osA"/>
                             <constraint firstItem="OrK-md-J3d" firstAttribute="top" secondItem="6uQ-YC-XaV" secondAttribute="bottom" id="Ywn-tP-qmq"/>
                             <constraint firstItem="6uQ-YC-XaV" firstAttribute="top" secondItem="nFE-9W-4Wf" secondAttribute="bottom" id="bku-iC-kB0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nFE-9W-4Wf" secondAttribute="trailing" id="dC2-40-FNo"/>
                             <constraint firstItem="nFE-9W-4Wf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dOk-fu-8pG"/>
                             <constraint firstItem="OrK-md-J3d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mKO-FD-WV0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WL0-Hx-mtp" secondAttribute="trailing" id="pM0-d1-mXD"/>
+                            <constraint firstItem="Q09-w6-fNT" firstAttribute="top" secondItem="OrK-md-J3d" secondAttribute="bottom" id="tJ8-FR-nWQ"/>
+                            <constraint firstItem="Q09-w6-fNT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tl2-wM-qTE"/>
+                            <constraint firstItem="c7i-9N-qxS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wCO-Va-20q"/>
+                            <constraint firstItem="c7i-9N-qxS" firstAttribute="top" secondItem="Q09-w6-fNT" secondAttribute="bottom" id="xVk-Cc-1Qw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="YKI-Qf-TQD"/>
                     <connections>
+                        <outlet property="VacationDateView" destination="c7i-9N-qxS" id="ikU-7u-uy9"/>
                         <outlet property="citiesView" destination="OrK-md-J3d" id="VrX-LG-WhZ"/>
+                        <outlet property="searchButton" destination="WL0-Hx-mtp" id="4c9-tn-1fg"/>
                         <outlet property="weatherView" destination="nFE-9W-4Wf" id="yJp-Lw-Xnd"/>
                     </connections>
                 </viewController>

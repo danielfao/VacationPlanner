@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vCf-Vq-rBo">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="3I1-Q4-iGr">
+            <objects>
+                <navigationController toolbarHidden="NO" id="vCf-Vq-rBo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FAR-Xf-FyC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6Uq-Vq-YQo" kind="relationship" relationship="rootViewController" id="a80-8n-R8s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G0z-mC-SXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-466" y="164"/>
+        </scene>
+        <!--All Cities View Controller-->
+        <scene sceneID="aZ3-it-pwY">
+            <objects>
+                <viewController storyboardIdentifier="AllCitiesViewController" id="6Uq-Vq-YQo" customClass="AllCitiesViewController" customModule="VacationPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ctc-em-gWb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sqA-mA-e3f">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Of-hs-Xfp" firstAttribute="bottom" secondItem="sqA-mA-e3f" secondAttribute="bottom" id="8lX-su-Mwf"/>
+                            <constraint firstItem="sqA-mA-e3f" firstAttribute="leading" secondItem="9Of-hs-Xfp" secondAttribute="leading" id="Be4-y1-1xl"/>
+                            <constraint firstItem="9Of-hs-Xfp" firstAttribute="trailing" secondItem="sqA-mA-e3f" secondAttribute="trailing" id="oJ1-46-NIy"/>
+                            <constraint firstItem="sqA-mA-e3f" firstAttribute="top" secondItem="9Of-hs-Xfp" secondAttribute="top" id="zGJ-5n-nxq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Of-hs-Xfp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2aw-Ga-lzb"/>
+                    <connections>
+                        <outlet property="tableView" destination="sqA-mA-e3f" id="z4V-jF-ent"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="scp-lK-lzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="418" y="163"/>
+        </scene>
+    </scenes>
+</document>

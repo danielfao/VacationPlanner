@@ -22,17 +22,35 @@
                                 <rect key="frame" x="0.0" y="102" width="375" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-YC-XaV" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="238" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="pVW-qp-b9O"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OrK-md-J3d" customClass="CitiesView" customModule="VacationPlanner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="238" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nFE-9W-4Wf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7zx-5F-eKS"/>
+                            <constraint firstAttribute="trailing" secondItem="6uQ-YC-XaV" secondAttribute="trailing" id="JBf-aB-AAg"/>
+                            <constraint firstItem="6uQ-YC-XaV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OUf-uN-Ruc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OrK-md-J3d" secondAttribute="trailing" id="TCi-7f-osA"/>
+                            <constraint firstItem="OrK-md-J3d" firstAttribute="top" secondItem="6uQ-YC-XaV" secondAttribute="bottom" id="Ywn-tP-qmq"/>
+                            <constraint firstItem="6uQ-YC-XaV" firstAttribute="top" secondItem="nFE-9W-4Wf" secondAttribute="bottom" id="bku-iC-kB0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nFE-9W-4Wf" secondAttribute="trailing" id="dC2-40-FNo"/>
                             <constraint firstItem="nFE-9W-4Wf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dOk-fu-8pG"/>
+                            <constraint firstItem="OrK-md-J3d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mKO-FD-WV0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="YKI-Qf-TQD"/>
                     <connections>
+                        <outlet property="citiesView" destination="OrK-md-J3d" id="VrX-LG-WhZ"/>
                         <outlet property="weatherView" destination="nFE-9W-4Wf" id="yJp-Lw-Xnd"/>
                     </connections>
                 </viewController>

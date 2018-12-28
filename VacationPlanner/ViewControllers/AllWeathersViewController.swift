@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import Alamofire
 
 protocol AllWeathersViewControllerDelegate: class {
     func didSelectWeathers(selectedWeather: [Weather])
 }
 
 class AllWeathersViewController: UIViewController {
-    // MARK: - Outlets
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             self.tableView.dataSource = self

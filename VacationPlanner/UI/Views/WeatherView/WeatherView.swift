@@ -9,7 +9,7 @@
 import UIKit
 
 class WeatherView: BaseView {
-    // MARK: - Outlets
+    // MARK: - IBOutlets
     @IBOutlet weak var weatherTitleLabel: UILabel! {
         didSet {
             self.weatherTitleLabel.text = NSLocalizedString("weathers_title", comment: "")
@@ -19,7 +19,7 @@ class WeatherView: BaseView {
     }
     @IBOutlet weak var selectedWeatherLabel: UILabel! {
         didSet {
-            self.selectedWeatherLabel.text = NSLocalizedString("weathers_select_your_text", comment: "")
+            self.selectedWeatherLabel.text = NSLocalizedString("weathers_select_text", comment: "")
             self.selectedWeatherLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
             self.selectedWeatherLabel.textColor = UIColor.lightGray3
             self.selectedWeatherLabel.contentMode = .center
@@ -33,9 +33,10 @@ class WeatherView: BaseView {
         }
     }
     
+    // MARK: - Setup view
     func setup(weathers: [Weather]) {
         if weathers.isEmpty {
-            self.selectedWeatherLabel.text = NSLocalizedString("weathers_select_your_text", comment: "")
+            self.selectedWeatherLabel.text = NSLocalizedString("weathers_select_text", comment: "")
         } else {
             self.selectedWeatherLabel.text = weathers.map({ (weather) -> String in
                 return weather.name

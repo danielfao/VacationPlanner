@@ -8,7 +8,9 @@
 
 // Navigation Title
 "weathers_title" = "Climas";
+"cities_title" = "Cidades";
 "vacation_planner_title" = "Planejador de Férias";
 
 // MARK: - Weather text
-"weathers_select_your_text" = "Selecione o seu clima preferido";
+"weathers_select_text" = "Selecione o seu clima preferido";
+"cities_select_text" = "Selecione a sua cidade preferida";

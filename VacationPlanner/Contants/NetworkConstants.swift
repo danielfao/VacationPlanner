@@ -15,31 +15,34 @@ private struct NetworkConstants {
 
 enum RequestType {
     case weather
+    case cities
     
     func getURL() -> String {
         switch self {
         case .weather:
             return "\(NetworkConstants.baseURL)weather/"
+        case .cities:
+            return "\(NetworkConstants.baseURL)cities/"
         }
     }
     
     func getHTTPMethod() -> HTTPMethod {
         switch self {
-        case .weather:
+        case .weather, .cities:
             return .get
         }
     }
     
     func getEncoding() -> ParameterEncoding {
         switch self {
-        case .weather:
+        case .weather, .cities:
             return JSONEncoding.default
         }
     }
     
     func getHeaders() -> HTTPHeaders? {
         switch self {
-        case .weather:
+        case .weather, .cities:
             return nil
         }
     }

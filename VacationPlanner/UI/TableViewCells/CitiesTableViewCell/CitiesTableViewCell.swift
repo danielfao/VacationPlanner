@@ -1,5 +1,5 @@
 //
-//  WeatherTableViewCell.swift
+//  CitiesTableViewCell.swift
 //  VacationPlanner
 //
 //  Created by Daniel Oliveira on 27/12/18.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class WeatherTableViewCell: UITableViewCell {
+class CitiesTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var weatherLabel: UILabel! {
+    @IBOutlet weak var cityLabel: UILabel! {
         didSet {
-            self.weatherLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-            self.weatherLabel.textColor = UIColor.DarkGray1
+            self.cityLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            self.cityLabel.textColor = UIColor.DarkGray1
         }
     }
     @IBOutlet weak var selectedImageView: UIImageView! {
@@ -25,19 +25,19 @@ class WeatherTableViewCell: UITableViewCell {
     // MARK: - Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         self.selectionStyle = .none
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         self.setSelectedStyle()
     }
-
+    
     // MARK: - Setup
-    func setupCell(weather: Weather) {
-        self.weatherLabel.text = weather.name
+    func setupCell(city: City) {
+        self.cityLabel.text = "\(city.district), \(city.stateAcronym) - \(city.country)"
     }
     
     // MARK: - Functions

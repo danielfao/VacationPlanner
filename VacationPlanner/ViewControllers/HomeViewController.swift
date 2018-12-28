@@ -9,15 +9,21 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    // MARK: - Outlets
+    // MARK: - IBOutlets
     @IBOutlet weak var weatherView: WeatherView! {
         didSet {
             self.weatherView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapAllWeathers)))
         }
     }
+    @IBOutlet weak var citiesView: CitiesView! {
+        didSet {
+            self.citiesView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapAllCities)))
+        }
+    }
     
     // MARK: - Variables
     private var selectedWeathers: [Weather] = []
+    private var selectedCity: [City] = []
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,11 +42,29 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    @objc func didTapAllCities() {
+        let sb = UIStoryboard(name: StoryboardName.AllCities)
+        if let vc = sb.instantiateViewController(withIdentifier: ViewControllerName.AllCities) as? AllCitiesViewController {
+            vc.delegate = self
+            vc.previouslySelectedCity = self.selectedCity
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
+// MARK: - AllWeathersViewControllerDelegate
 extension HomeViewController: AllWeathersViewControllerDelegate {
     func didSelectWeathers(selectedWeather: [Weather]) {
         self.selectedWeathers = selectedWeather
         self.weatherView.setup(weathers: selectedWeather)
+    }
+}
+
+// MARK: - AllCitiesViewControllerDelegate
+extension HomeViewController: AllCitiesViewControllerDelegate {
+    func didSelectCity(selectedCity: [City]) {
+        self.selectedCity = selectedCity
+        self.citiesView.setup(city: selectedCity)
     }
 }

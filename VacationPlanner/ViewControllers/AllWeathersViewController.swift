@@ -23,26 +23,33 @@ class AllWeathersViewController: UIViewController {
             self.tableView.separatorStyle = .singleLine
             self.tableView.backgroundColor = UIColor.lightGray1
             self.tableView.allowsMultipleSelection = true
+            self.tableView.tableHeaderView = self.searchBar
         }
     }
     
     // MARK: - Variables
     private var weathers: [Weather] = [] {
         didSet {
-            self.tableView.reloadData()
-            
-            for previousWeather in self.previouslySelectedWeathers {
-                if let row = self.weathers.firstIndex(where: { (weather) -> Bool in
-                    return previousWeather.id == weather.id
-                }) {
-                    self.tableView.selectRow(at: IndexPath(row: row, section: 0), animated: false, scrollPosition: .none)
-                }
-            }
+            self.selectedWeathers = self.weathers.filter({ (weather) -> Bool in
+                return self.previouslySelectedWeathers.contains(weather)
+            })
             self.previouslySelectedWeathers.removeAll()
+            self.filterWith(term: "")
         }
     }
+    private var filteredWeathers: [Weather] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    private var selectedWeathers: [Weather] = []
     weak var delegate: AllWeathersViewControllerDelegate?
     var previouslySelectedWeathers: [Weather] = []
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        return searchBar
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -56,28 +63,39 @@ class AllWeathersViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.searchBar.frame.size.height = self.searchBar.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        var selectedWeathers: [Weather] = []
-        if let indexPathsForSelectedRows = self.tableView.indexPathsForSelectedRows {
-            for indexPath in indexPathsForSelectedRows {
-                selectedWeathers.append(self.weathers[indexPath.row])
-            }
+        self.delegate?.didSelectWeathers(selectedWeather: self.selectedWeathers)
+    }
+    
+    // MARK: - Methods
+    private func filterWith(term: String) {
+        guard !term.isEmpty else {
+            self.filteredWeathers = self.weathers
+            return
         }
-        self.delegate?.didSelectWeathers(selectedWeather: selectedWeathers)
+        self.filteredWeathers = self.weathers.filter({ (weather) -> Bool in
+            return weather.name.lowercased().contains(term.lowercased())
+        })
     }
 }
 
 // MARK: - Table View Data Source Extension
 extension AllWeathersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.weathers.count
+        return self.filteredWeathers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WeatherTableViewCell.self), for: indexPath) as? WeatherTableViewCell {
-            cell.setupCell(weather: self.weathers[indexPath.row])
+            cell.setupCell(weather: self.filteredWeathers[indexPath.row])
             return cell
         }
         return UITableViewCell()
@@ -86,5 +104,36 @@ extension AllWeathersViewController: UITableViewDataSource {
 
 // MARK: - Table View Delegate
 extension AllWeathersViewController: UITableViewDelegate {
-  
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.selectedWeathers.contains(self.filteredWeathers[indexPath.row]) {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !self.selectedWeathers.contains(self.filteredWeathers[indexPath.row]) {
+            self.selectedWeathers.append(self.filteredWeathers[indexPath.row])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let index = self.selectedWeathers.firstIndex(of: self.filteredWeathers[indexPath.row]) {
+            self.selectedWeathers.remove(at: index)
+        }
+    }
+}
+
+// MARK: - UI Search Bar Delegate
+extension AllWeathersViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filterWith(term: searchBar.text ?? "")
+    }
 }

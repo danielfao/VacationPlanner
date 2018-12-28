@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Weather {
+class Weather: Equatable {
     let id: String
     let name: String
     
@@ -19,5 +19,9 @@ class Weather {
         
         self.id = id
         self.name = name.capitalized
+    }
+    
+    static func == (lhs: Weather, rhs: Weather) -> Bool {
+        return lhs.id == rhs.id
     }
 }

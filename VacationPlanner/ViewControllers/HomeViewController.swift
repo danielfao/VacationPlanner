@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     
     // MARK: - Variables
     private var selectedWeathers: [Weather] = []
-    private var selectedCity: [City] = []
+    private var selectedCity: City?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ extension HomeViewController: AllWeathersViewControllerDelegate {
 
 // MARK: - AllCitiesViewControllerDelegate
 extension HomeViewController: AllCitiesViewControllerDelegate {
-    func didSelectCity(selectedCity: [City]) {
+    func didSelectCity(selectedCity: City?) {
         self.selectedCity = selectedCity
         self.citiesView.setup(city: selectedCity)
     }

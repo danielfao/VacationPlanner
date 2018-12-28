@@ -33,13 +33,11 @@ class CitiesView: BaseView {
     }
     
     // MARK: - Setup view
-    func setup(city: [City]) {
-        if city.isEmpty {
-            self.selectedCitiesLabel.text = NSLocalizedString("cities_select_text", comment: "")
+    func setup(city: City?) {
+        if let city = city {
+            self.selectedCitiesLabel.text = city.formatedName
         } else {
-            self.selectedCitiesLabel.text = city.map({ (city) -> String in
-                return city.district
-            }).joined(separator: ", ")
+            self.selectedCitiesLabel.text = NSLocalizedString("cities_select_text", comment: "")
         }
     }
 }

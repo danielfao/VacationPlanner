@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AllCitiesViewControllerDelegate: class {
-    func didSelectCity(selectedCity: [City])
+    func didSelectCity(selectedCity: City?)
 }
 
 class AllCitiesViewController: UIViewController {
@@ -30,18 +30,18 @@ class AllCitiesViewController: UIViewController {
         didSet {
             self.tableView.reloadData()
             
-            for previousCity in previouslySelectedCity {
+            if let previousCity = previouslySelectedCity {
                 if let row = self.cities.firstIndex(where: { (city) -> Bool in
                     return previousCity.id == city.id
                 }) {
                     self.tableView.selectRow(at: IndexPath(row: row, section: 0), animated: false, scrollPosition: .none)
                 }
             }
-            self.previouslySelectedCity.removeAll()
+            self.previouslySelectedCity = nil
         }
     }
     weak var delegate: AllCitiesViewControllerDelegate?
-    var previouslySelectedCity: [City] = []
+    var previouslySelectedCity: City?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -58,11 +58,9 @@ class AllCitiesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        var selectedCity: [City] = []
-        if let indexPathsForSelectedRows = self.tableView.indexPathsForSelectedRows {
-            for indexPath in indexPathsForSelectedRows {
-                selectedCity.append(self.cities[indexPath.row])
-            }
+        var selectedCity: City?
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            selectedCity = self.cities[indexPath.row]
         }
         self.delegate?.didSelectCity(selectedCity: selectedCity)
     }

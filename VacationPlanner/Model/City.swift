@@ -30,4 +30,8 @@ class City {
         self.stateAcronym = stateAcronym
         self.country = country
     }
+    // MARK: - Computed properties
+    var formatedName: String {
+        return "\(self.district), \(self.stateAcronym) - \(self.country)"
+    }
 }

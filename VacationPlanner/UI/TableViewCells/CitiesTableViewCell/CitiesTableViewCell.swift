@@ -37,7 +37,7 @@ class CitiesTableViewCell: UITableViewCell {
     
     // MARK: - Setup
     func setupCell(city: City) {
-        self.cityLabel.text = "\(city.district), \(city.stateAcronym) - \(city.country)"
+        self.cityLabel.text = city.formatedName
     }
     
     // MARK: - Functions
